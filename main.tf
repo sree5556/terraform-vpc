@@ -1,3 +1,5 @@
 resource "aws_vpc" "sample" {
-  cidr_block = "192.168.0.0/24"
+  cidr_block = var.VPC_CIDR
 }
+
+
