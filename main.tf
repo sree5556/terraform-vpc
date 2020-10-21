@@ -8,3 +8,8 @@ resource "aws_subnet" "private-subnets" {
   vpc_id = aws_vpc.main.id
 }
 
+resource "aws_subnet" "public-subnets" {
+  count = length(var.PUBLIC_SUBNETS)
+  cidr_block = element(var.PUBLIC_SUBNETS, count.index)
+  vpc_id = aws_vpc.main.id
+}
