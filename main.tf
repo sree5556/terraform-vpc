@@ -1,5 +1,8 @@
 resource "aws_vpc" "main" {
   cidr_block          = var.VPC_CIDR
+  tags                = {
+    Name              = "main-vpc"
+  }
 }
 
 resource "aws_subnet" "private-subnets" {
@@ -7,6 +10,9 @@ resource "aws_subnet" "private-subnets" {
   cidr_block          = element(var.PRIVATE_SUBNETS, count.index)
   vpc_id              = aws_vpc.main.id
   availability_zone   = element(data.aws_availability_zones.available.names, count.index)
+  tags                = {
+    Name              = "public-subnet-${count.index+1}"
+  }
 }
 
 resource "aws_subnet" "public-subnets" {
@@ -14,5 +20,8 @@ resource "aws_subnet" "public-subnets" {
   cidr_block          = element(var.PUBLIC_SUBNETS, count.index)
   vpc_id              = aws_vpc.main.id
   availability_zone   = element(data.aws_availability_zones.available.names, count.index)
+  tags                = {
+    Name              = "private-subnet-${count.index+1}"
+  }
 }
 
