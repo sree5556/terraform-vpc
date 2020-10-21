@@ -1,8 +1,3 @@
 resource "aws_vpc" "sample" {
-  cidr_block = ""
-}
-
-resource "aws_instance" "" {
-  ami = ""
-  instance_type = ""
+  cidr_block = "192.168.0.0/24"
 }
