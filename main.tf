@@ -1,7 +1,8 @@
 resource "aws_vpc" "main" {
   cidr_block          = var.VPC_CIDR
   tags                = {
-    Name              = "main-vpc"
+    Name              = "roboshop-vpc-${var.ENV}"
+    Environment       = var.ENV
   }
 }
 
@@ -12,6 +13,7 @@ resource "aws_subnet" "private-subnets" {
   availability_zone   = element(data.aws_availability_zones.available.names, count.index)
   tags                = {
     Name              = "private-subnet-${count.index+1}"
+    Environment       = var.ENV
   }
 }
 
@@ -22,6 +24,7 @@ resource "aws_subnet" "public-subnets" {
   availability_zone   = element(data.aws_availability_zones.available.names, count.index)
   tags                = {
     Name              = "public-subnet-${count.index+1}"
+    Environment       = var.ENV
   }
 }
 
