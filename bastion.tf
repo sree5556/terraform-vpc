@@ -12,6 +12,7 @@ resource "aws_instance" "bastion" {
 resource "aws_security_group" "allow-ssh-bastion" {
   name        = "allow-ssh-bastion"
   description = "allow-ssh-bastion"
+  vpc_id      = aws_vpc.main.id
 
   ingress {
     description = "TLS from VPC"
