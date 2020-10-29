@@ -2,7 +2,7 @@ resource "aws_vpc" "main" {
   cidr_block          = "192.168.0.0/24"
   tags                = {
     Name              = "roboshop-vpc" //-${var.ENV}"
-    Environment       =  DEV //var.ENV
+    Environment       =  "DEV" //var.ENV
   }
 }
 
