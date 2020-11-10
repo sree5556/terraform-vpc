@@ -8,3 +8,5 @@ dev: ## Run against Dev Env
 prod: ## Run against Prod Env
 	@terraform init -backend-config=states/prod.tfvars -no-color
 	@terraform apply -auto-approve -var-file=env/prod.tfvars -no-color
+
+
