@@ -11,7 +11,7 @@ prod: ## Run against Prod Env
 
 dev-destroy: ## Destroy against Dev Env
 	@terraform init -backend-config=states/dev.tfvars -no-color
-	@terraform plan -backend-config=states/dev.tfvars -no-color
+	@terraform plan-destroy -auto-approve -var-file=env/dev.tfvars -no-color
 #-backend-config="key=ami/dev/${component}/terraform.tfstate" -force-copy
 #	@terraform state rm aws_ami_from_instance.ami
 	@terraform destroy -auto-approve -var-file=env/dev.tfvars -no-color
